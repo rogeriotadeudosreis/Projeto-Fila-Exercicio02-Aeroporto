@@ -45,7 +45,6 @@ public class FilaAviaoView extends javax.swing.JFrame {
     }
 
     private void adicionarEventoswCombboxAvioes() throws Exception {
-
         //adiciona um desparador de eventos, ou literalmente o evento
         jComboBoxAvioes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,17 +61,22 @@ public class FilaAviaoView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
     }
+    
+    private void validaCombo(){
+        
+    }
 
     private void preencherFormulario() throws Exception {
         if (jComboBoxAvioes.getSelectedIndex() > 0) {
             jTextFieldEmpresa.setText(jComboBoxAvioes.getSelectedItem().toString());
             jTextFieldNumero.setText(jComboBoxAvioes.getSelectedIndex() + "");
+
         } else {
             throw new Exception("Seleção inválida! Selecione uma empresa válida!");
         }
     }
-    
-    private void limpaCampos(){
+
+    private void limpaCampos() {
         jTextFieldEmpresa.requestFocus();
         jTextFieldEmpresa.setText("");
         jTextFieldNumero.setText("");
@@ -289,7 +293,7 @@ public class FilaAviaoView extends javax.swing.JFrame {
                 jTextAreaSaida.setText(jTextAreaSaida.getText() + "\n" + fila.peek());
                 fila.dequeue();
             }
-            while(!filaAux.isEmpty()){
+            while (!filaAux.isEmpty()) {
                 fila.enqueue(filaAux.peek());
                 filaAux.dequeue();
             }
